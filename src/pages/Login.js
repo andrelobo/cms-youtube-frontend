@@ -31,13 +31,15 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h3>Login</h3>
+    
+    <div className="login-container" style={{ textAlign: "center" }}>
+      
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h3 style={{ textAlign: "center" , color:"green"}}>Login</h3>
 
-      <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="emailInput" className="form-label mt-4">
-            Email address
+          <label htmlFor="emailInput" className="form-label">
+            Email 
           </label>
           <input
             type="email"
@@ -47,13 +49,13 @@ const Login = () => {
             name="email"
             value={credentials.email}
             onChange={handleInputChange}
-            placeholder="johndoe@example.com"
+            placeholder="seumenino@example.com"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="passwordInput" className="form-label mt-4">
-            Password
+          <label htmlFor="passwordInput" className="form-label">
+            Senha
           </label>
           <input
             type="password"
@@ -62,16 +64,16 @@ const Login = () => {
             name="password"
             value={credentials.password}
             onChange={handleInputChange}
-            placeholder="Enter Password"
+            placeholder="Senha"
             required
           />
         </div>
-        <input type="submit" value="Login" className="btn btn-primary my-3" />
+        <input type="submit" value="Login" className="btn btn-primary my-3 btn-sm rounded login-btn" />
         <p>
-          Don't have an account ? <Link to="/register">Create One</Link>
+          Não tem uma conta? <Link to="/register">Crie uma!</Link>
         </p>
       </form>
-    </>
+    </div>
   );
 };
 

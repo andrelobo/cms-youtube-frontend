@@ -16,7 +16,7 @@ const AllContact = () => {
   useEffect(async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8000/api/mycontacts`, {
+      const res = await fetch(`https://syscam-backend.onrender.com/api/mycontacts`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,7 +38,7 @@ const AllContact = () => {
   const deleteContact = async (id) => {
     if (window.confirm("are you sure you want to delete this contact ?")) {
       try {
-        const res = await fetch(`http://localhost:8000/api/delete/${id}`, {
+        const res = await fetch(`https://syscam-backend.onrender.com/api/delete/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -71,17 +71,17 @@ const AllContact = () => {
   return (
     <>
       <div>
-        <h1>Your Contacts</h1>
-        <a href="/mycontacts" className="btn btn-danger my-2">
-          Reload Contact
-        </a>
+        <h1>Lista dos Pacientes</h1>
+        <a href="/mycontacts" className="btn btn-info my-2 btn-sm rounded">
+          Recarregar contatos
+        </a> 
         <hr className="my-4" />
         {loading ? (
-          <Spinner splash="Loading Contacts..." />
+          <Spinner splash="Carregando Contacts..." />
         ) : (
           <>
             {contacts.length == 0 ? (
-              <h3>No contacts created yet</h3>
+              <h3>Nenhum contato foi criado ainda ...</h3>
             ) : (
               <>
                 <form className="d-flex" onSubmit={handleSearchSubmit}>
@@ -94,21 +94,21 @@ const AllContact = () => {
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                   />
-                  <button type="submit" className="btn btn-info mx-2">
-                    Search
+                  <button type="submit" className="btn btn-info mx-2 bt-sm rounded">
+                    Busca
                   </button>
                 </form>
 
                 <p>
-                  Your Total Contacts: <strong>{contacts.length}</strong>
+                  Seu total: <strong>{contacts.length}</strong>
                 </p>
                 <table className="table table-hover">
                   <thead>
                     <tr className="table-dark">
-                      <th scope="col">Name</th>
-                      <th scope="col">Address</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Endereço</th>
                       <th scope="col">Email</th>
-                      <th scope="col">Phone</th>
+                      <th scope="col">Fone</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -135,39 +135,39 @@ const AllContact = () => {
         )}
       </div>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal show={showModal} onHide={() => setShowModal(false)} >
         <Modal.Header closeButton>
-          <Modal.Title>{modalData.name}</Modal.Title>
-        </Modal.Header>
+          <Modal.Title >{modalData.name}</Modal.Title>
+        </Modal.Header >
 
-        <Modal.Body>
-          <h3>{modalData.name}</h3>
+        <Modal.Body >
+         
           <p>
-            <strong>Address</strong>: {modalData.address}
+            <strong>Endereço</strong>: {modalData.address}
           </p>
           <p>
             <strong>Email</strong>: {modalData.email}
           </p>
           <p>
-            <strong>Phone Number</strong>: {modalData.phone}
+            <strong>Telefone</strong>: {modalData.phone}
           </p>
         </Modal.Body>
 
         <Modal.Footer>
-          <Link className="btn btn-info" to={`/edit/${modalData._id}`}>
-            Edit
+          <Link className="btn btn-info btn-sm rounded" to={`/edit/${modalData._id}`}>
+            Editar
           </Link>
           <button
-            className="btn btn-danger"
+            className="btn btn-danger btn-sm rounded"
             onClick={() => deleteContact(modalData._id)}
           >
-            Delete
+            Deletar
           </button>
           <button
-            className="btn btn-warning"
+            className="btn btn-warning btn-sm rounded"
             onClick={() => setShowModal(false)}
           >
-            Close
+            Fechar
           </button>
         </Modal.Footer>
       </Modal>

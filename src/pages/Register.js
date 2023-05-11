@@ -44,12 +44,12 @@ const Register = () => {
 
   return (
     <>
-      <h3>Create your account</h3>
+      <h3>Crie sua conta :</h3>
 
       <form onSubmit={handleSubmit}>
         <div class="form-group">
           <label for="nameInput" class="form-label mt-4">
-            Your Name
+            Seu nome :
           </label>
           <input
             type="text"
@@ -64,7 +64,7 @@ const Register = () => {
         </div>
         <div class="form-group">
           <label for="emailInput" class="form-label mt-4">
-            Email address
+            Email 
           </label>
           <input
             type="email"
@@ -80,7 +80,7 @@ const Register = () => {
         </div>
         <div class="form-group">
           <label for="passwordInput" class="form-label mt-4">
-            Password
+            Senha
           </label>
           <input
             type="password"
@@ -95,7 +95,7 @@ const Register = () => {
         </div>
         <div class="form-group">
           <label for="confirmPassword" class="form-label mt-4">
-            Confirm Password
+            Confirme sua senha :
           </label>
           <input
             type="password"
@@ -110,11 +110,11 @@ const Register = () => {
         </div>
         <input
           type="submit"
-          value="Register"
+          value="Registre-se"
           className="btn btn-primary my-3"
         />
         <p>
-          Already have an account ? <Link to="/login">Login</Link>
+          Já tem uma conta ? <Link to="/login">Login</Link>
         </p>
       </form>
     </>
